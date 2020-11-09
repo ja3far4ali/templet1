@@ -1,0 +1,681 @@
+
+/* position fixed and abselute convert the element from disply block to inline block like our header*/
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* dont let padding and porder effect on width*/
+}
+.cont{
+    width: 80%;
+    margin: auto;
+/*header section*/
+}
+.header{
+    position: fixed;
+    width: 100%;/* position fixed and abselute convert the element from disply block to inline block like our header*/
+    z-index: 2;
+    padding-top: 30px;
+    background: #afacac;
+    opacity: 80%;
+
+   
+}
+.header .logo{
+    width: 40%;
+   color: white;
+    float: left;
+    padding-bottom: 40px;
+    
+}
+
+
+.header .nav{
+    width: 60%;
+    text-align: right;
+    float: left;
+}
+.clear{
+    clear: both;
+}
+.header .nav ul{
+    list-style: none;
+}
+.header .nav ul> li{
+    display: inline-block;
+}
+.header .nav ul li a{
+    color: rgb(241, 241, 247);
+    text-decoration: none;/*better to add the padding to a than li that is better for user experiance for the pointer*/
+display: block;/*changed it to block becaus it is an inline element and we cant give it width and hight*/
+padding: 15px; /* ther is on a in each li so we give it disply block but if there were mor than a in li it will apper ander each other it mean vertical bloks*/
+}
+.dropdown{
+    position: absolute;
+    width:20px;
+    text-align: center;
+    display: block;
+    left: -16px;
+    top: 77%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s visibility 0.5s ease-in-out;
+}
+.dropli:hover .dropdown{
+    opacity: 90%;
+    visibility: visible;
+    cursor: pointer;
+}
+.dropli{
+    position:relative;
+}
+.dropdown a{
+    width: 104px;
+    background:#6195ff ;
+    border: 1px;
+    border-radius: 15%;
+    
+}
+/*end off header section*/
+.home{
+    height: 100vh;/*vh mean the hole borde */
+    background-image: url(../images/background1.jpg);
+    background-size: cover;
+    position: relative;
+}
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+.home-content{
+    /*background: seagreen;/*now we will make hero image tecnic element in the center of another element*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% ,-50%);
+    text-align: center;
+width: 65%;
+}
+.titel{
+    color: white;
+    font-size: 3rem;/*root element mean html font size stander 16px then multible with rem val*/
+text-transform: uppercase;
+font-family: montserrat,sans-serif;
+}
+.home-description{
+    margin: 20px;
+    color: white;
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+.btn{
+    
+    width: 160px;
+    padding: 14px 0;
+    border-radius: 5px;
+    border: 0;
+cursor: pointer;
+font-size: 18px;
+}
+.btn-start{
+    margin-right:10px ;
+    background-color: white;
+}
+.btn-learn{
+    margin-right:10px ;
+    background-color: #6195ff;
+    color: white;
+}
+.hover-opacity:hover{
+    opacity: 0.8;/* to apply it for all buttons as a class name*/
+    -moz-transition: 0.5s ease-in-out;
+}
+
+/* nav bar underline effect hover*/
+.header .nav ul li a:after{
+    content: '';
+    width: 0;
+    height: 3px;
+    display: block;
+    background-color: rgb(71, 124, 240);
+
+
+}
+.header .nav ul li a:hover:after{
+    width: 100%;
+
+}
+.header .nav ul li a.active:after{
+    content: '';
+    width: 100%;
+    height: 3px;
+    display: block;
+    background-color: rgb(71, 124, 240);
+}
+/*general section header*/
+.section-header{
+    text-align: center;
+
+}
+.section-header .section-titel{
+    font-size:35px ;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+}
+.section-header .line{
+    display: block;/*the span is a inline elemnt so we convert it to block to apply margin*/
+    margin:0 auto 70px auto;/*top 0  left auto bottom 70 right auto*/
+    height: 5px;
+    width: 70px;
+    background-color:rgb(71, 124, 240) ;
+}
+.pd-y{
+    padding: 100px 0;
+}
+.about{
+
+}
+.about-content{
+    overflow: hidden;/* to solve flowt problem give the parent off the three items overflow hiddin*/
+
+}
+.about-item{
+    width: 30%;
+    float: left;
+    text-align: center;
+    border: 1px solid rgba(51, 57, 61,0.2);
+    padding: 50px 20px;
+}
+.about-item.mg{/*notic .class.class mean one element tacke this class not nesting*/
+margin: 0 5%;
+}
+.about-item .icon{
+color:rgb(71, 124, 240);
+margin-bottom: 10px;
+}
+.about-item-titel{
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    transition: 0.5s ease-in-out;
+}
+.about-item-desc{
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+.about-item-link{
+    color:rgb(71, 124, 240) ;
+    text-decoration: none;
+}
+.ltr-effect{
+    position: relative;
+}
+.ltr-effect::after{/*left to right effect*/
+position: absolute;
+content: '';
+width: 0;
+height: 100%;
+background: #333333;
+/*now the content will apper after last element witch is read me so we add top 0 left 0 to start from the biggining*/
+top: 0;
+transition: 0.5s ease-in-out;
+z-index: -1;
+left: 0;
+/*we can do that in another way right --- top 0 bottom 0 left 0 right 0---without width 100% and hight% */
+}
+.ltr-effect:hover:after{
+    width: 100%;
+}
+.about-item:hover .about-item-titel{ /*lma 23ml hover 3la about item bring me titel 23lo wihte*/
+    color: white;
+}
+/*porfolio section*/
+.portfolio{
+    background: #faf8f8;
+}
+.portfolio-content{
+    overflow: hidden;
+}
+.portfolio-item{
+    float: left;
+    width: 30%;
+    margin-bottom: 50px;
+    position: relative;/*to let the child come over it (the child layer-content with absulute position)*/
+padding: 20px;
+
+}
+.portfolio-item img{
+    width: 100%;
+}
+.portfolio-item.mg{
+    margin:0 5%;
+}
+.portfolio-item .layer-content{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+   left: 0;
+    background: rgba(31, 31, 28, 0.9);
+    opacity: 0;/*for the hover effect*/
+    transition: 0.5s ease-in;
+}
+.portfolio-item:hover .layer-content{
+    opacity: 100%;
+}
+.layer-content .layer-info{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% ,-50%);
+    text-align: center;
+    
+    }
+    .cato{
+        color:rgb(46, 95, 201) ;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 5px;
+        font-size: 30px;
+        font-weight: 700;
+        position: relative;
+        top: 10px;
+        transition: 0.5s ease-in-out;
+       
+
+    }
+    .layer-content-titel{
+        font-size: 25px;
+        
+        color: white;
+        margin-bottom: 10px;
+        position: relative;
+        top: 10px;
+        transition: 0.5s ease-in-out;
+     
+    }
+    .layer-info a{
+       color: white;
+       position: relative;
+       top: 10px;
+       transition: 0.5s ease-in-out;
+      
+    }
+    .layer-info a i{
+        line-height: 40px;/*40px as width and hight for the parent a*/
+        display: inline-block;/*to apper inline*/
+        width: 40px;
+        height: 40px;
+        background-color: rgb(73, 110, 190);
+    }
+    .portfolio-item:hover .cato {
+        top: 0;
+    }
+    .portfolio-item:hover .layer-content-titel{
+        top: 0;
+    }
+    .portfolio-item:hover .layer-info a{
+        top: 0;
+    }
+    /*offer section*/
+    .offer-content{
+        overflow: hidden;
+    }
+    .offer-item{
+        width: 30%;
+        float: left;
+        margin-bottom: 20px ;
+        border: 1px solid rgba(51, 57, 61,0.2);
+        padding: 20px 15px 30px 70px;/*to put the icon to the right*/
+        position: relative;
+    }
+    .offer-item.mg{
+        margin: 0 5%;
+    }
+    .offer-item .icon{
+        position: absolute;
+        left: 15px;
+        top: 25px;
+        color: rgb(73, 110, 190);
+        
+       
+    }
+    .offer-item-titel{
+        text-transform: capitalize;
+        margin-bottom: 20px;
+        transition: position 1s ease-in-out;
+        position: relative;
+
+    }
+    .offer-item-desc{
+        text-transform: capitalize;
+        margin-bottom: 20px;
+        line-height: 1.6;
+        color: rgb(85, 76, 76);
+        transition: 0.5s ease-in-out;
+        
+    }
+    .offer-item:hover .offer-item-titel{
+        color: white;
+        scale: 1.1;
+        transition: 0.5s ease-in-out;
+    }
+    .offer-item:hover .offer-item-desc{
+        color: white;
+    }
+    /*services section*/
+    .services{
+        background: rgb(241, 240, 240);
+    }
+    .ser-item{
+        width: 50%;
+        float: left;
+        position: relative;
+    }
+    .ser-item .section-header{
+        text-align: left;
+        position: absolute;
+       top: -60px;
+       font-size: 14px;
+    }
+    .ser-item .section-header .section-titel{
+        font-size: 25px;
+    }
+    .ser-item .section-header .line{
+        margin:0 0 70px 0;
+
+    }
+     .ser-item-desc{
+        color: rgb(90, 82, 82);
+        padding-right: 20px;
+        line-height: 1.4;
+        font-size: 18px;
+        margin-bottom: 20px;
+        
+    }
+    .ser-list{
+        list-style: none;
+
+    }
+    .ser-list li i{
+        border: 1px solid seagreen;
+        color: blue;
+        padding: 7px 7px ;
+        margin: 5px 5px;
+        border-radius: 50px;
+    }
+    .ser-item .next {
+        list-style: none;
+       text-align: center;
+    }
+    .ser-item .next li{
+        width: 10px;
+        height: 10px;
+        background-color: rgb(156, 156, 161);
+        display: inline-block;
+       border-radius: 50%;
+        margin: 10px 10px;
+        cursor: pointer;
+
+    }
+    .ser-item .next li.active{
+        background-color: rgb(76, 76, 228);
+    }
+    .ser-item .next li:hover{
+        background-color: rgb(76, 76, 228);
+    }
+    .services .down{
+        margin-top: 70px;
+    }
+    .ser-item .ser-img{
+        width: 100%;
+    }
+    .numbers{
+        position: relative;/*to make the abslute overlay move in this parent not in body*/
+        background-image: url(../images/background2.jpg);
+        background-size: cover;
+        background-attachment: fixed;/*nice effect for fixed bg*/
+        height: 300px;/*without this nothing will apper in this div becuase of the position abslute for the overlay*/
+    }
+    .numbers .number-content{
+        overflow: hidden;
+        text-align: center;
+        margin-top: 150px;
+    }
+    .number-item{
+        width: 25%;
+        float: left;
+    }
+    .number-item .icon{
+        color: rgb(56, 56, 146);
+        margin-bottom: 15px;
+
+
+    }
+    .number-item .number-item-titel{
+        font-weight: bold;
+        font-size: 30px;
+        color: white;
+        
+        
+    }
+    .number-item .number-item-text{
+        color: white;
+        text-transform: capitalize;
+    }
+        /*pricing section*/
+        .pricing-content{
+            overflow: hidden;
+        }
+        .pricing-item{
+            width: 30%;
+            float: left;
+            padding: 40px 20px;
+            border: 1px solid rgb(132, 132, 138);
+            text-align: center;
+        }
+        .pricing-item.mg{
+            margin: 0 5%;
+        }
+        .pric-item-text{
+            color: rgb(135, 135, 163);
+            text-transform: uppercase;
+            font-size: 17px;
+            transition:color 0.5s ease-in-out;
+        }
+        .pric-permonth{
+            width: 130px;
+            height: 130px;
+           padding:20px 0;
+           
+            margin: 15px auto;
+            border: 2px solid rgb(134, 165, 233);
+            border-radius: 50%;
+            
+        }
+        .pric-permonth .dollar{
+            font-size:50px ;
+           
+            
+        }
+        .pric-permonth .monthe{
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        .pric-list{
+            list-style: none;
+        }
+        .pric-list li{
+            line-height: 1.8;
+            color: rgb(77, 78, 128);
+        }
+        .pric-btn{
+            background: none;
+            border: 0;
+            display: block;
+            width: 150px;
+            margin: 0 auto;
+            padding: 10px;
+            margin: 15px auto 0 auto;
+            color: rgb(126, 147, 241);
+            border:2px solid rgb(134, 165, 233);
+            cursor: pointer;
+        }
+        .ttb-effect{
+            position: relative;
+        }
+        .ttb-effect::after{/*left to right effect*/
+        position: absolute;
+        content: '';
+        height:  0;
+        width:  100%;
+        background: #333333;
+        /*now the content will apper after last element witch is read me so we add top 0 left 0 to start from the biggining*/
+        top: 0;
+        transition: 0.5s ease-in-out;
+        z-index: -1;
+        left: 0;
+        }
+    
+    .ttb-effect:hover:after{
+        height:  100%;
+    }
+    .pricing-item:hover .pric-item-text{
+        color: rgb(60, 60, 156);
+    }
+
+    /*testemonial section*/
+    .teste{
+        position: relative;
+        background-image: url(../images/background3.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+        height: 400px;
+    }
+    .teste-content{
+        overflow: hidden;
+        padding: 120px 0;
+        width: 90%;
+        margin: auto;
+         
+    }
+    .teste-item{
+        width: 40%;
+        float: left;
+        color: white;
+        margin-left: 5%;
+    }
+    .teste-item .teste-img{
+       position: relative;
+        padding: 10px 10px 40px 90px;
+    }
+   
+
+    .teste-item .teste-img img{
+        position: absolute;
+        left: 3px;
+        top: 5px;
+        border-radius: 50%;
+    }
+    .teste-item .teste-img .teste-name{
+        margin-bottom: 5px;
+    }
+    .teste-item .teste-img .teste-span{
+        color: rgb(103, 97, 196);
+    }
+    .teste-desc{
+        line-height: 1.5;
+        font-size: 17px;
+    }
+    /*team section*/
+.team-content{
+    overflow: hidden;
+}
+.team-item{
+    width:30%;
+    float: left;
+    background: #e8e8e8;
+    padding:20px 15px;
+    text-align: center;
+}
+.team-item .team-img{
+    position: relative;
+}
+.team-overlay{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+    visibility: hidden;/*if we used the opacity alone the overlay place will be exist that men if i move the cursor on facebook icon i will find it place */
+}
+.team-overlay a{
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: rgb(112, 112, 179);
+    margin-left: auto;/*to move the icon to the left side -margin left auto becuase it is block*/
+}
+.team-overlay a i{
+    line-height: 40px;/*hight of parent*/
+    cursor: pointer;
+    
+}
+.team-item .team-info-titel{
+    color: #222;
+     margin: 10px 0;
+     transition: 0.5s ease-in-out;
+}
+.team-item .team-info-text{
+color:rgba(58, 59, 63, 0.6);
+text-transform: uppercase;
+transition: 0.5s ease-in-out;
+}
+.team-item:hover .team-overlay{
+    opacity: 1;
+    visibility: visible;
+}
+.team-item.ttb-effect{
+    z-index: 1;
+}
+.team-item:hover .team-info-titel{
+color: white;
+}
+.team-item:hover .team-info-text{
+   color: white; 
+}
+.team-item.mg{
+    margin: 0 55px;
+}
+/*footer section*/
+.foot{
+    background: rgb(82, 82, 88);
+    text-align: center;
+    margin-top: 20px;
+    
+}
+.foot .log{
+    color: white;
+    font-size: 33px;
+    font-weight: 800;
+   padding: 10px 20px;
+}
+.foot-links{
+    list-style: none;
+    display: inline-block;
+    margin:0 auto;
+}
+.foot-links li{
+    display: inline-block;
+    padding: 10px 20px;
+
+}
